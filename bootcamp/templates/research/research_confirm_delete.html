@@ -1,0 +1,20 @@
+<!-- Changed news to research -->
+
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete research" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Delete a posted research" %}</h1>
+
+<p>{% trans 'Are you sure you want to continue? If you do this you will delete this research' %}</p>
+
+<form method="post" action="{% url 'researcg:delete_research' research.pk %}">
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">{% trans 'Delete' %}</button>
+</form>
+
+
+{% endblock %}
