@@ -70,6 +70,7 @@ class Notification(models.Model):
     """
 
     LIKED = "L"
+    ATTENDED = "N"
     COMMENTED = "C"
     FAVORITED = "F"
     ANSWERED = "A"
@@ -84,6 +85,7 @@ class Notification(models.Model):
     REPLY = "R"
     NOTIFICATION_TYPES = (
         (LIKED, _("liked")),
+        (ATTENDED, _("attended")),
         (COMMENTED, _("commented")),
         (FAVORITED, _("cavorited")),
         (ANSWERED, _("answered")),

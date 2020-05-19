@@ -36,6 +36,7 @@ class Migration(migrations.Migration):
                     models.CharField(
                         choices=[
                             ("L", "liked"),
+                            ("N", "attended"),
                             ("C", "commented"),
                             ("F", "cavorited"),
                             ("A", "answered"),

@@ -10,6 +10,7 @@ urlpatterns = [
     ),
     url(r"^post-news/$", views.post_news, name="post_news"),
     url(r"^like/$", views.like, name="like_post"),
+    url(r"^attended/$", views.attended, name="attended_post"),
     url(r"^get-thread/$", views.get_thread, name="get_thread"),
     url(r"^post-comment/$", views.post_comment, name="post_comments"),
     url(
