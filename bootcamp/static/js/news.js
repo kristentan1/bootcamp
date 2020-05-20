@@ -108,7 +108,7 @@ $(function () {
       type: 'POST',
       cache: false,
       success: function (data) {
-        $alert('success');
+        console.log("I DID IT");
         $(".like .like-count", li).text(data.likes);
         if ($(".like .heart", li).hasClass("fa fa-heart")) {
           $(".like .heart", li).removeClass("fa fa-heart");
