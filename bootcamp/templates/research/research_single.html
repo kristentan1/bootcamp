@@ -15,7 +15,7 @@
       {% endthumbnail %}
     </div>
     <div class="post">
-      {% if resarch.user == request.user %}
+      {% if research.user == request.user %}
         <a href="{% url 'research:delete_research' research.pk %}">
           <i class="fa fa-times pull-right" aria-hidden="true" title="{% trans 'Click to remove this research' %}"></i>
         </a>
@@ -25,7 +25,8 @@
           <a href="{% url 'users:detail' research.user.username  %}">{{ research.user.get_profile_name|title }}</a>
         </strong>
       </p>
-      <p>{{ research|urlize|urlize_target_blank }}</p>
+      <!-- <p>{{ research|urlize|urlize_target_blank }}</p> -->
+      <p>{{ research }}</p>
       
       {% if research.meta_url %}
         <a href="{{ research.meta_url }}" target="_blank" class="card meta">
