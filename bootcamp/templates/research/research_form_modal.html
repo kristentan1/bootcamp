@@ -15,8 +15,17 @@
         <form id="postResearchForm" role="form" method="post" action="#" onsubmit="return false">
           {% csrf_token %}
           <div class="form-group">
-            <textarea id="researchInput" name="post" rows="3" class="form-control" maxlength="280"></textarea>
-            <span id="researchCounter" class="pull-right">280</span>
+            <p>Opportunity Title</p>
+            <textarea id="researchInput" name="post" rows="1" class="form-control" maxlength="700"></textarea>
+            <!-- <span id="researchCounter" class="pull-right"></span> -->
+
+            <p>Opportunity Description</p>
+            <textarea id="researchInputDescription" name="post" rows="7" class="form-control" maxlength="500"></textarea>
+            <!-- <span id="researchCounter" class="pull-right"></span> -->
+
+            <p>Opportunity Link</p>
+            <textarea id="researchInputLink" name="post" rows="1" class="form-control" maxlength="100"></textarea>
+            <!-- <span id="researchCounter" class="pull-right"></span> -->
           </div>
         </form>
       </div>

@@ -41,15 +41,21 @@ class ResearchDeleteView(LoginRequiredMixin, AuthorRequiredMixin, DeleteView): #
 def post_research(request): # Changed news to research
     """A function view to implement the post functionality with AJAX allowing
     to create Research instances as parent ones.""" # Changed news to research
+    # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+    # print(request)
+    # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     user = request.user
-    post = request.POST["post"]
-    post = post.strip()
+    post = '<h3>TITLE\n</h3>' + request.POST.getlist('post')[0] + '\n\n' + '<h3>DESCRIPTION\n</h3>' + request.POST.getlist('post')[1] + '\n\n' + '<h3>LINK\n</h3>' + request.POST.getlist('post')[2]
+    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+    print(str(request.POST.getlist('post')))
+    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+    # post = post.strip()
     if 0 < len(post) <= 280:
         # posted = News.objects.create(user=user, content=post)
-        posted = Research.objects.create(user=user, content=post)
+        posted = Research.objects.create(user=user, content = post)
         html = render_to_string(
             # "news/news_single.html", {"news": posted, "request": request}
-            "research/research_single.html", {"research": posted, "request": request}
+            "research/research_single.html", {"research":posted, "request": request}
         )
         return HttpResponse(html)
 
@@ -66,13 +72,13 @@ def post_research(request): # Changed news to research
 def like(request):
     """Function view to receive AJAX, returns the count of likes a given research
     has recieved.""" # Changed news to research
-    # news_id = request.POST["news"]
-    # news = News.objects.get(pk=news_id)
-    research_id = request.POST["research"]
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print(request.POST)
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    research_id = request.POST["research"] 
+    # research_id = request.POST.get('research', 'some_default')
     research = Research.objects.get(pk=research_id)
     user = request.user
-    # news.switch_like(user)
-    # return JsonResponse({"likes": news.count_likers()})
     research.switch_like(user)
     return JsonResponse({"likes": research.count_likers()})
 

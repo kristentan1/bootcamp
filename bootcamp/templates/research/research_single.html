@@ -25,8 +25,7 @@
           <a href="{% url 'users:detail' research.user.username  %}">{{ research.user.get_profile_name|title }}</a>
         </strong>
       </p>
-      <!-- <p>{{ research|urlize|urlize_target_blank }}</p> -->
-      <p>{{ research }}</p>
+      {{ research|safe }}
       
       {% if research.meta_url %}
         <a href="{{ research.meta_url }}" target="_blank" class="card meta">

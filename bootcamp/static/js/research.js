@@ -59,9 +59,6 @@ $(function () {
     $("input, textarea").attr("autocomplete", "off");
   
     $("#postResearch").click(function () {
-        console.log('****************************************');
-        console.log('INSIDE POST RESEARCH');
-        console.log('****************************************');
       // Ajax call after pushing button, to register a Research object.
       $.ajax({
         url: '/research/post-research/',
@@ -69,8 +66,13 @@ $(function () {
         type: 'POST',
         cache: false,
         success: function (data) {
+          console.log('****************************************');
+          console.log(data);
+          console.log('****************************************');
           $("ul.stream").prepend(data);
-          $("#researchInput").val("");
+          // $("ul.stream").append(data); THIS LITERALLY DIDN'T CHANGE ANYTHING !!!
+          $("#researchInput").val("")
+          // $("#researchInput").val("") + $("#researchInputDescription").val("") + $("#researchInputLink").val("");
           $("#researchFormModal").modal("hide");
           hide_stream_update();
         },
@@ -111,11 +113,14 @@ $(function () {
         type: 'POST',
         cache: false,
         success: function (data) {
+          console.log('IN SUCCESS FUNCTION FOR LIKE!');
           $(".like .like-count", li).text(data.likes);
           if ($(".like .heart", li).hasClass("fa fa-heart")) {
+            console.log('IN IF FOR LIKE!');
             $(".like .heart", li).removeClass("fa fa-heart");
             $(".like .heart", li).addClass("fa fa-heart-o");
           } else {
+            console.log('IN ELSE FOR LIKE!');
             $(".like .heart", li).removeClass("fa fa-heart-o");
             $(".like .heart", li).addClass("fa fa-heart");
           }
