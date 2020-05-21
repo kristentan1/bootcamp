@@ -30,7 +30,7 @@ class Research(models.Model):
     )
     timestamp = models.DateTimeField(auto_now_add=True)
     uuid_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    content = models.TextField(max_length=280)
+    content = models.TextField(max_length=1000, default='')
     liked = models.ManyToManyField(
         # settings.AUTH_USER_MODEL, blank=True, related_name="liked_news"
         settings.AUTH_USER_MODEL, blank=True, related_name="liked_research"

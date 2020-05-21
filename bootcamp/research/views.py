@@ -45,12 +45,12 @@ def post_research(request): # Changed news to research
     # print(request)
     # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     user = request.user
-    post = '<h3>TITLE\n</h3>' + request.POST.getlist('post')[0] + '\n\n' + '<h3>DESCRIPTION\n</h3>' + request.POST.getlist('post')[1] + '\n\n' + '<h3>LINK\n</h3>' + request.POST.getlist('post')[2]
+    post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Description\n</h5>' + request.POST.getlist('post')[1] + '\n\n' + '<h5>Link\n</h5>' + request.POST.getlist('post')[2]
     print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     print(str(request.POST.getlist('post')))
     print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     # post = post.strip()
-    if 0 < len(post) <= 280:
+    if 0 < len(post) <= 1000:
         # posted = News.objects.create(user=user, content=post)
         posted = Research.objects.create(user=user, content = post)
         html = render_to_string(
@@ -60,7 +60,7 @@ def post_research(request): # Changed news to research
         return HttpResponse(html)
 
     else:
-        length = len(post) - 280
+        length = len(post) - 1000
         return HttpResponseBadRequest(
             content=_(f"Text is {length} characters longer than accepted.")
         )
