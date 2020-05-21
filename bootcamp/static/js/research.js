@@ -66,14 +66,12 @@ $(function () {
         type: 'POST',
         cache: false,
         success: function (data) {
-          console.log('****************************************');
-          console.log(data);
-          console.log('****************************************');
           $("ul.stream").prepend(data);
-          // $("ul.stream").append(data); THIS LITERALLY DIDN'T CHANGE ANYTHING !!!
-          $("#researchInput").val("")
-          // $("#researchInput").val("") + $("#researchInputDescription").val("") + $("#researchInputLink").val("");
+          $("#researchInput").val("");
+          // $("#researchInputDescription").val("");
+          // $("#researchInputLink").val("");
           $("#researchFormModal").modal("hide");
+          $('#postResearchForm').get(0).reset();
           hide_stream_update();
         },
         error: function (data) {
