@@ -13,8 +13,14 @@
         <form id="postNewsForm" role="form" method="post" action="#" onsubmit="return false">
           {% csrf_token %}
           <div class="form-group">
-            <textarea id="newsInput" name="post" rows="3" class="form-control" maxlength="280"></textarea>
-            <span id="newsCounter" class="pull-right">280</span>
+            <p>Opportunity Title</p>
+            <textarea id="newsInput" name="post" rows="1" class="form-control" maxlength="700"></textarea>
+
+            <p>Opportunity Description</p>
+            <textarea id="newsInputDescription" name="post" rows="7" class="form-control" maxlength="500"></textarea>
+
+            <p>Opportunity Link</p>
+            <textarea id="newsInputLink" name="post" rows="1" class="form-control" maxlength="100"></textarea>
           </div>
         </form>
       </div>

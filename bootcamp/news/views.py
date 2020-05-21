@@ -36,7 +36,8 @@ def post_news(request):
     """A function view to implement the post functionality with AJAX allowing
     to create News instances as parent ones."""
     user = request.user
-    post = request.POST["post"]
+    # post = request.POST["post"]
+    post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Description\n</h5>' + request.POST.getlist('post')[1] + '\n\n' + '<h5>Link\n</h5>' + request.POST.getlist('post')[2]
     post = post.strip()
     if 0 < len(post) <= 280:
         posted = News.objects.create(user=user, content=post)

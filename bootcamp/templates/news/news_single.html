@@ -23,7 +23,7 @@
           <a href="{% url 'users:detail' news.user.username  %}">{{ news.user.get_profile_name|title }}</a>
         </strong>
       </p>
-      <p>{{ news|urlize|urlize_target_blank }}</p>
+      <p>{{ news|safe }}</p>
       
       {% if news.meta_url %}
         <a href="{{ news.meta_url }}" target="_blank" class="card meta">

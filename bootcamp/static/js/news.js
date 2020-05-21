@@ -69,6 +69,7 @@ $(function () {
         $("ul.stream").prepend(data);
         $("#newsInput").val("");
         $("#newsFormModal").modal("hide");
+        $('#postNewsForm').get(0).reset(); //Why is this not resetting all three fields???
         hide_stream_update();
       },
       error: function (data) {
