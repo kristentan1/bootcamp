@@ -21,11 +21,17 @@ class NewsType(DjangoObjectType):
     def resolve_count_likers(self, info, **kwargs):
         return self.get_likers().count()
 
+    def resolve_count_attendees(self, info, **kwargs):
+        return self.get_attendees().count()
+
     def resolve_get_thread(self, info, **kwargs):
         return self.get_thread()
 
     def resolve_get_likers(self, info, **kwargs):
         return self.get_likers()
+    
+    def resolve_get_attendees(self, info, **kwargs):
+        return self.get_attendees()
 
 
 class NewsPaginatedType(graphene.ObjectType):
