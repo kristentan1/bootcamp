@@ -24,7 +24,7 @@ class SearchListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(*args, **kwargs)
         query = self.request.GET.get("query")
         context["active"] = "news"
-        context["hide_search"] = True
+        context["hide_search"] = False
         context["tags_list"] = Tag.objects.filter(name=query)
         context["news_list"] = News.objects.filter(
             content__icontains=query, reply=False
