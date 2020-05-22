@@ -8,6 +8,7 @@ from django.views.generic import ListView
 from taggit.models import Tag
 
 from bootcamp.articles.models import Article
+from bootcamp.research.models import Research # Will this wrok?
 from bootcamp.news.models import News
 from bootcamp.helpers import ajax_required
 from bootcamp.qa.models import Question
@@ -28,6 +29,9 @@ class SearchListView(LoginRequiredMixin, ListView):
         context["news_list"] = News.objects.filter(
             content__icontains=query, reply=False
         ).distinct()
+        context["research_list"] = Research.objects.filter(
+            content__icontains=query, reply=False
+        ).distinct()
         context["articles_list"] = Article.objects.filter(
             Q(title__icontains=query)
             | Q(content__icontains=query)
@@ -45,6 +49,7 @@ class SearchListView(LoginRequiredMixin, ListView):
             .distinct()
         )
         context["news_count"] = context["news_list"].count()
+        context["research_count"] = context["research_list"].count()
         context["articles_count"] = context["articles_list"].count()
         context["questions_count"] = context["questions_list"].count()
         context["users_count"] = context["users_list"].count()

@@ -66,6 +66,7 @@ class SearchViewsTests(TestCase):
         response = self.client.get(reverse("search:results"), {"query": "This is"})
         assert response.status_code == 200
         assert self.news_one in response.context["news_list"]
+        assert self.news_one in response.context["research_list"]
         assert self.question_one in response.context["questions_list"]
         assert self.question_two in response.context["questions_list"]
         assert self.article in response.context["articles_list"]
