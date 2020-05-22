@@ -39,7 +39,7 @@ def post_news(request):
     # post = request.POST["post"]
     post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Description\n</h5>' + request.POST.getlist('post')[1] + '\n\n' + '<h5>Link\n</h5>' + request.POST.getlist('post')[2]
     post = post.strip()
-    if 0 < len(post) <= 280:
+    if 0 < len(post) <= 1000:
         posted = News.objects.create(user=user, content=post)
         html = render_to_string(
             "news/news_single.html", {"news": posted, "request": request}
@@ -47,7 +47,7 @@ def post_news(request):
         return HttpResponse(html)
 
     else:
-        length = len(post) - 280
+        length = len(post) - 1000
         return HttpResponseBadRequest(
             content=_(f"Text is {length} characters longer than accepted.")
         )
