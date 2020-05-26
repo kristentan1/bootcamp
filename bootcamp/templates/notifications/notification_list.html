@@ -34,7 +34,7 @@
             <p class="notification-desc">
               {{ notification.get_verb_display }}
               {% if notification.action_object %}
-                {{ notification.action_object }}
+                {{ notification.action_object|safe }}
               {% endif %}
             </p>
             <div class="notification-meta">
