@@ -7,7 +7,7 @@
 
 
 {% for reply in thread %}
-  <li class="card" news-id="{{ reply.uuid_id }}"> <!-- I feel like changing this ID might break something, like CSS. So am leaving it for now. 5/13/20, 13:09 -->
+  <li class="card" research-id="{{ reply.uuid_id }}"> <!-- I feel like changing this ID might break something, like CSS. So am leaving it for now. 5/13/20, 13:09 -->
     <div class="card-body">
       <div class="profile-picture">
         {% thumbnail reply.user.picture "x60" as im %}

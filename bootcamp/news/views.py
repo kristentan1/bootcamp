@@ -60,6 +60,7 @@ def like(request):
     """Function view to receive AJAX, returns the count of likes a given news
     has recieved."""
     news_id = request.POST["news"]
+    print("news_id" + news_id)
     news = News.objects.get(pk=news_id)
     user = request.user
     news.switch_like(user)

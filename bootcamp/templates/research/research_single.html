@@ -5,7 +5,7 @@
 {% load thumbnail %}
 {% load urlize_target_blank %}
 
-<li class="infinite-item card" news-id="{{ news.uuid_id }}"> <!-- Leving this for now bc I think changing the ID might break something. 05/13/20, 13:12 -->
+<li class="infinite-item card" research-id="{{ research.uuid_id }}"> <!-- Leving this for now bc I think changing the ID might break something. 05/13/20, 13:12 -->
   <div class="card-body">
     <div class="profile-picture">
       {% thumbnail research.user.picture "x60" as im %} <!-- Something is going to break for sure :) -->

@@ -51,7 +51,7 @@ class ResearchQuery(object): # Changed news to research
     # news = graphene.Field(NewsType, uuid_id=graphene.String())
     research = graphene.Field(ResearchType, uuid_id=graphene.String())
 
-    def resolve_all_news(self, info, **kwargs):
+    def resolve_all_research(self, info, **kwargs):
         # return News.objects.filter(reply=False)
         return Research.objects.filter(reply=False)
 
@@ -66,9 +66,10 @@ class ResearchQuery(object): # Changed news to research
 
     def resolve_research(self, info, **kwargs): # Changed news to research
         uuid_id = kwargs.get("uuid_id")
-
+        print("uuid_id" + uuid_id)
         if uuid_id is not None:
             # return News.objects.get(uuid_id=uuid_id)
+            print("uuid_id" + uuid_id)
             return Research.objects.get(uuid_id=uuid_id)
 
         return None

@@ -54,6 +54,23 @@ $(function () {
         });
     };
 
+    function update_social_activity_research (id_value) {
+        let newsToUpdate = $("[research-id=" + id_value + "]");
+        payload = {
+            'id_value': id_value,
+        };
+        $.ajax({
+            url: '/research/update-interactions/',
+            data: payload,
+            type: 'POST',
+            cache: false,
+            success: function (data) {
+                $(".like-count", newsToUpdate).text(data.likes);
+                $(".comment-count", newsToUpdate).text(data.comments);
+            },
+        });
+    };
+
     checkNotifications();
 
     $('#notifications').popover({
@@ -116,13 +133,23 @@ $(function () {
                 $("#notifications").addClass("btn-danger");
                 update_social_activity(event.id_value);
                 break;
-
+            
+            case "social_update_research":
+                $("#notifications").addClass("btn-danger");
+                update_social_activity_research(event.id_value);
+            
+                break;
             case "additional_news":
                 if (event.actor_name !== currentUser) {
                     $(".stream-update").show();
                 }
                 break;
-
+            
+            case "additional_research":
+                if (event.actor_name !== currentUser) {
+                    $(".stream-update").show();
+                }
+                break;
             default:
                 console.log('error: ', event);
                 break;

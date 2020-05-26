@@ -89,7 +89,7 @@ class Research(models.Model):
                 Notification.LIKED,
                 action_object=self,
                 id_value=str(self.uuid_id),
-                key="social_update",
+                key="social_update_research",
             )
 
     def get_parent(self):
@@ -122,7 +122,7 @@ class Research(models.Model):
             # action_object=reply_news,
             action_object=reply_research,
             id_value=str(parent.uuid_id),
-            key="social_update",
+            key="social_update_research",
         )
 
     def get_thread(self):

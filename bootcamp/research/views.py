@@ -76,6 +76,7 @@ def like(request):
     print(request.POST)
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     research_id = request.POST["research"] 
+    print("research_id" + research_id)
     # research_id = request.POST.get('research', 'some_default')
     research = Research.objects.get(pk=research_id)
     user = request.user
