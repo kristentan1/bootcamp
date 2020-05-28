@@ -83,6 +83,17 @@ def like(request):
     research.switch_like(user)
     return JsonResponse({"likes": research.count_likers()})
 
+@login_required
+@ajax_required
+@require_http_methods(["POST"])
+def attended(request):
+    """Function view to receive AJAX, returns the count of attended a given news
+    has recieved."""
+    research_id = request.POST["research"]
+    research = Research.objects.get(pk=research_id)
+    user = request.user
+    research.switch_attend(user)
+    return JsonResponse({"attendeds": research.count_attendees()})
 
 @login_required
 @ajax_required
@@ -134,5 +145,5 @@ def update_interactions(request):
     # news = News.objects.get(pk=data_point)
     research = Research.objects.get(pk=data_point)
     # data = {"likes": news.count_likers(), "comments": news.count_thread()}
-    data = {"likes": research.count_likers(), "comments": research.count_thread()}
+    data = {"likes": research.count_likers(), "comments": research.count_thread(), "attendeds": news.count_attendees()}
     return JsonResponse(data)

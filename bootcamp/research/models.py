@@ -35,6 +35,9 @@ class Research(models.Model):
         # settings.AUTH_USER_MODEL, blank=True, related_name="liked_news"
         settings.AUTH_USER_MODEL, blank=True, related_name="liked_research"
     )
+    attended = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, related_name="attended_research"
+    )
     reply = models.BooleanField(verbose_name=_("Is a reply?"), default=False)
     meta_url = models.CharField(max_length=2048, null=True)
     meta_type = models.CharField(max_length=255, null=True)
@@ -92,6 +95,21 @@ class Research(models.Model):
                 key="social_update_research",
             )
 
+    def switch_attend(self, user):
+        if user in self.attended.all():
+            self.attended.remove(user)
+
+        else:
+            self.attended.add(user)
+            notification_handler(
+                user,
+                self.user,
+                Notification.ATTENDED,
+                action_object=self,
+                id_value=str(self.uuid_id),
+                key="social_update_research",
+            )
+
     def get_parent(self):
         if self.parent:
             return self.parent
@@ -137,3 +155,9 @@ class Research(models.Model):
 
     def get_likers(self):
         return self.liked.all()
+
+    def count_attendees(self):
+        return self.attended.count()
+
+    def get_attendees(self):
+        return self.attended.all()

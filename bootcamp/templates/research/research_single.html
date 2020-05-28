@@ -57,6 +57,16 @@
         <a href="#" class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>
           <span class="comment-count">{{ research.count_thread }}</span>
         </a>
+        <a href="#" class="attended" title="{% for i in research.get_attendees %}{{ i }}&#10;{% endfor %}">
+          <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+          {% if request.user in research.get_attendees %}
+            <i class="check fa fa-check-square" aria-hidden="true"></i>
+          {% else %}            
+            <i class="check fa fa-check-square-o" aria-hidden="true"></i>
+          {% endif %}
+          <span class="attended-count">{{ research.count_attendees }}</span>
+          <!--<span class="comment-count">{{ news.count_thread }}</span>-->
+        </a>
         <span class="timestamp">{{ research.timestamp|naturaltime }}</span>
       </div>
     </div>
