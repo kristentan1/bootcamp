@@ -72,6 +72,24 @@ $(function () {
         });
     };
 
+    function update_social_activity_internship (id_value) {
+        let newsToUpdate = $("[internship-id=" + id_value + "]");
+        payload = {
+            'id_value': id_value,
+        };
+        $.ajax({
+            url: '/internship/update-interactions/',
+            data: payload,
+            type: 'POST',
+            cache: false,
+            success: function (data) {
+                $(".like-count", newsToUpdate).text(data.likes);
+                $(".attended-count", newsToUpdate).text(data.attendeds);
+                $(".comment-count", newsToUpdate).text(data.comments);
+            },
+        });
+    };
+
     checkNotifications();
 
     $('#notifications').popover({
@@ -148,6 +166,17 @@ $(function () {
                 }
                 console.log("Past the if statement");
                 break;
+
+            case "social_update_internship":
+                //$("#notifications").addClass("btn-danger");
+                console.log("actor_name" + event.actor_name + "currentUser" + currentUser);
+                if (event.actor_name !== currentUser){
+                    console.log("In the if statement");
+                    update_social_activity_internship(event.id_value);
+                }
+                console.log("Past the if statement");
+                break;
+
             case "additional_news":
                 if (event.actor_name !== currentUser) {
                     $(".stream-update").show();
@@ -159,6 +188,13 @@ $(function () {
                     $(".stream-update").show();
                 }
                 break;
+            
+            case "additional_internship":
+                if (event.actor_name !== currentUser) {
+                    $(".stream-update").show();
+                }
+                break;
+
             default:
                 console.log('error: ', event);
                 break;

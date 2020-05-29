@@ -1,0 +1,20 @@
+<!-- Changed news to internship -->
+
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete internship" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Delete a Post from the Internship Feed" %}</h1>
+
+<p>{% trans 'Are you sure you want to continue? If you do this you will delete this internship' %}</p>
+
+<form method="post" action="{% url 'internship:delete_internship' internship.pk %}">
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">{% trans 'Delete' %}</button>
+</form>
+
+
+{% endblock %}

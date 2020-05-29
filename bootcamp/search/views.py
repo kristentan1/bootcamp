@@ -32,6 +32,9 @@ class SearchListView(LoginRequiredMixin, ListView):
         context["research_list"] = Research.objects.filter(
             content__icontains=query, reply=False
         ).distinct()
+        context["internship_list"] = Internship.objects.filter(
+            content__icontains=query, reply=False
+        ).distinct()
         context["articles_list"] = Article.objects.filter(
             Q(title__icontains=query)
             | Q(content__icontains=query)
@@ -50,6 +53,7 @@ class SearchListView(LoginRequiredMixin, ListView):
         )
         context["news_count"] = context["news_list"].count()
         context["research_count"] = context["research_list"].count()
+        context["internship_count"] = context["internship_list"].count()
         context["articles_count"] = context["articles_list"].count()
         context["questions_count"] = context["questions_list"].count()
         context["users_count"] = context["users_list"].count()
