@@ -27,16 +27,16 @@
             <a href="{% url 'favorites:list' %}"><span class="new-posts"></span> {% trans 'There are new posts' %}</a>
           </div>
           <div class="infinite-container">
-            <ul class="stream" id="liked_news">
-              <span>Liked Internships</span>
-              {% for favorites in news %}
-                {% include 'news/news_single.html' with news=favorites %}
-              {% endfor %}
-            </ul>
             <ul class="stream" id="liked_research">
               <span>Liked Research</span>
               {% for favorites in research %}
                 {% include 'research/research_single.html' with research=favorites %}
+              {% endfor %}
+            </ul>
+            <ul class="stream" id="liked_internship">
+              <span>Liked Internships</span>
+              {% for favorites in internship %}
+                {% include 'internship/internship_single.html' with internship=favorites %}
               {% endfor %}
             </ul>
           </div>

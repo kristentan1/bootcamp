@@ -214,6 +214,7 @@ def notification_handler(actor, recipient, verb, **kwargs):
     """
     key = kwargs.pop("key", "notification")
     id_value = kwargs.pop("id_value", None)
+    print(recipient)
     if recipient == "global":
         users = get_user_model().objects.all().exclude(username=actor.username)
         for user in users:
@@ -226,6 +227,7 @@ def notification_handler(actor, recipient, verb, **kwargs):
         notification_broadcast(actor, key)
 
     elif isinstance(recipient, list):
+        
         for user in recipient:
             Notification.objects.create(
                 actor=actor,
@@ -235,15 +237,17 @@ def notification_handler(actor, recipient, verb, **kwargs):
             )
 
     elif isinstance(recipient, get_user_model()):
-        Notification.objects.create(
-            actor=actor,
-            recipient=recipient,
-            verb=verb,
-            action_object=kwargs.pop("action_object", None),
-        )
-        notification_broadcast(
-            actor, key, id_value=id_value, recipient=recipient.username
-        )
+        print("recipient " + str(recipient) + " actor.username " + actor.username)
+        if (recipient != actor):
+            Notification.objects.create(
+                actor=actor,
+                recipient=recipient,
+                verb=verb,
+                action_object=kwargs.pop("action_object", None),
+            )
+            notification_broadcast(
+                actor, key, id_value=id_value, recipient=recipient.username
+            )
 
     else:
         pass

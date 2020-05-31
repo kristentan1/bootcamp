@@ -43,9 +43,10 @@
                 </ul>
                 <ul class="navbar-nav mr-auto">
                   <!-- The below url will have to be altered from "news" to "internship" -->
-                  <li class="nav-item"><a class="nav-link" href="{% url 'news:list' %}">{% trans 'Internship Feed' %} <span class="sr-only">(current)</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'news:list' %}">{% trans 'News Feed' %} <span class="sr-only">(current)</span></a></li>
                   <!-- Adding more feeds -->
                   <li class="nav-item"><a class="nav-link" href="{% url 'research:list' %}">{% trans 'Research Feed' %} </a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'internship:list' %}">{% trans 'Internship Feed' %} </a></li>
                   <!-- <li class="nav-item"><a class="nav-link" href="{% url 'articles:list' %}">Blog</a></li> -->
                   <!-- <li class="nav-item"><a class="nav-link" href="{% url 'qa:index_noans' %}">{% trans 'Q&A' %}</a></li> -->
                   <!-- <li class="nav-item"><a class="nav-link" href="{% url 'messager:messages_list' %}">{% trans 'Inbox' %}</a></li> -->

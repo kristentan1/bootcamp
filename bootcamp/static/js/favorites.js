@@ -81,29 +81,31 @@ $(function () {
       // Ajax call on action on like button.
       console.log("clicked like");
       var li = $(this).closest("li");
-      var news = $(li).attr("news-id");
-      if (news !== undefined){
+      var internship = $(li).attr("internship-id");
+      if (internship !== undefined){
         payload = {
-          'news': news,
-          'csrf_token': csrftoken
-        }
-        $.ajax({
-          url: '/news/like/',
-          data: payload,
-          type: 'POST',
-          cache: false,
-          success: function (data) {
-            console.log("I DID IT");
-            $(".like .like-count", li).text(data.likes);
-            if ($(".like .heart", li).hasClass("fa fa-heart")) {
-              $(".like .heart", li).removeClass("fa fa-heart");
-              $(".like .heart", li).addClass("fa fa-heart-o");
-            } else {
-              $(".like .heart", li).removeClass("fa fa-heart-o");
-              $(".like .heart", li).addClass("fa fa-heart");
-            }
+            'internship': internship,
+            'csrf_token': csrftoken
           }
-        });
+          $.ajax({
+            url: '/internship/like/',
+            data: payload,
+            type: 'POST',
+            cache: false,
+            success: function (data) {
+              console.log('IN SUCCESS FUNCTION FOR LIKE!');
+              $(".like .like-count", li).text(data.likes);
+              if ($(".like .heart", li).hasClass("fa fa-heart")) {
+                console.log('IN IF FOR LIKE!');
+                $(".like .heart", li).removeClass("fa fa-heart");
+                $(".like .heart", li).addClass("fa fa-heart-o");
+              } else {
+                console.log('IN ELSE FOR LIKE!');
+                $(".like .heart", li).removeClass("fa fa-heart-o");
+                $(".like .heart", li).addClass("fa fa-heart");
+              }
+            }
+          });
       }
       else{
         var research = $(li).attr("research-id");

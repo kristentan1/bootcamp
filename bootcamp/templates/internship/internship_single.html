@@ -1,0 +1,74 @@
+<!-- Changed news to internship -->
+
+{% load i18n %}
+{% load humanize static %}
+{% load thumbnail %}
+{% load urlize_target_blank %}
+
+<li class="infinite-item card" internship-id="{{ internship.uuid_id }}"> <!-- Leving this for now bc I think changing the ID might break something. 05/13/20, 13:12 -->
+  <div class="card-body">
+    <div class="profile-picture">
+      {% thumbnail internship.user.picture "x60" as im %} <!-- Something is going to break for sure :) -->
+        <img src="{{ im.url }}" class="pull-left" style="border-radius: 50%;" alt="{% trans 'User Image' %}" class="user-image">
+      {% empty %}
+        <img src="{% static 'img/user.png' %}" class="pull-left" height="60px" alt="{% trans 'No Profile Picture' %}" />
+      {% endthumbnail %}
+    </div>
+    <div class="post">
+      {% if internship.user == request.user %}
+        <a href="{% url 'internship:delete_internship' internship.pk %}">
+          <i class="fa fa-times pull-right" aria-hidden="true" title="{% trans 'Click to remove this internship' %}"></i>
+        </a>
+      {% endif %}
+      <p>
+        <strong>
+          <a href="{% url 'users:detail' internship.user.username  %}">{{ internship.user.get_profile_name|title }}</a>
+        </strong>
+      </p>
+      {{ internship|safe }}
+      
+      {% if internship.meta_url %}
+        <a href="{{ internship.meta_url }}" target="_blank" class="card meta">
+          {% if internship.meta_image %}
+            <div class="card-img-top" style="background-image: url({{ internship.meta_image }})"></div>
+          {% endif %}
+          <div class="card-body">
+            {% if internship.meta_title %}
+              <h5 class="card-title">{{ internship.meta_title }}</h5>
+            {% endif %}
+            {% if internship.meta_description %}
+              <p class="card-text">{{ internship.meta_description }}</p>
+            {% endif %}
+            {% if internship.meta_url %}
+              <p class="card-btn">{{ internship.meta_url }}</p>
+            {% endif %}
+          </div>
+        </a>
+      {% endif %}
+      <div class="interaction" id="interaction">
+        <a href="#" class="like" title="{% for i in internship.get_likers %}{{ i }}&#10;{% endfor %}">
+          {% if request.user in internship.get_likers %}
+            <i class="heart fa fa-heart" aria-hidden="true"></i>
+          {% else %}
+            <i class="heart fa fa-heart-o" aria-hidden="true"></i>
+          {% endif %}
+          <span class="like-count">{{ internship.count_likers }}</span>
+        </a>
+        <a href="#" class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>
+          <span class="comment-count">{{ internship.count_thread }}</span>
+        </a>
+        <a href="#" class="attended" title="{% for i in internship.get_attendees %}{{ i }}&#10;{% endfor %}">
+          <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+          {% if request.user in internship.get_attendees %}
+            <i class="check fa fa-check-square" aria-hidden="true"></i>
+          {% else %}            
+            <i class="check fa fa-check-square-o" aria-hidden="true"></i>
+          {% endif %}
+          <span class="attended-count">{{ internship.count_attendees }}</span>
+          <!--<span class="comment-count">{{ news.count_thread }}</span>-->
+        </a>
+        <span class="timestamp">{{ internship.timestamp|naturaltime }}</span>
+      </div>
+    </div>
+  </div>
+</li>

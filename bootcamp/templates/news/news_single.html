@@ -55,16 +55,17 @@
         <a href="#" class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>
           <span class="comment-count">{{ news.count_thread }}</span>
         </a>
-        <a href="#" class="attended" title="{% for i in news.get_attendees %}{{ i }}&#10;{% endfor %}">
-          <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+        <!--Commenting this attended button out for know but leaving everything else just in case we need it again-->
+        <!--<a href="#" class="attended" title="{% for i in news.get_attendees %}{{ i }}&#10;{% endfor %}">
+          
           {% if request.user in news.get_attendees %}
             <i class="check fa fa-check-square" aria-hidden="true"></i>
           {% else %}            
             <i class="check fa fa-check-square-o" aria-hidden="true"></i>
           {% endif %}
           <span class="attended-count">{{ news.count_attendees }}</span>
-          <!--<span class="comment-count">{{ news.count_thread }}</span>-->
-        </a>
+          
+        </a>-->
         <span class="timestamp">{{ news.timestamp|naturaltime }}</span>
       </div>
     </div>

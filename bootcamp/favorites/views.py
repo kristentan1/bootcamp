@@ -10,8 +10,9 @@ from django.views.generic import ListView, DeleteView
 
 from bootcamp.helpers import ajax_required, AuthorRequiredMixin
 # from bootcamp.news.models import News
+from bootcamp.internship.models import Internship
 from bootcamp.research.models import Research
-from bootcamp.news.models import News
+
 
 
 class FavoritesListView(LoginRequiredMixin, ListView):
@@ -21,7 +22,7 @@ class FavoritesListView(LoginRequiredMixin, ListView):
     #model = Favorites
     paginate_by = 15
     template_name = "favorites/favorites_list.html"
-    queryset = [Research.objects.all(), News.objects.all()]
+    queryset = [Research.objects.all(), Internship.objects.all()]
     
     """def get_queryset(self, **kwargs):
         # return News.objects.filter(reply=False)
@@ -32,8 +33,8 @@ class FavoritesListView(LoginRequiredMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['research'] = Research.objects.filter(reply=False).filter(liked=self.request.user)
-        context['news'] = News.objects.filter(reply=False).filter(liked=self.request.user)
-        
+        context['internship'] = Internship.objects.filter(reply=False).filter(liked=self.request.user)
+        print(context)
         return context
 
 

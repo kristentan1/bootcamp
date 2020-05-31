@@ -14,14 +14,14 @@ from bootcamp.notifications.models import Notification, notification_handler
 from bootcamp.helpers import fetch_metadata
 
 
-class Research(models.Model):
+class Internship(models.Model):
     """News model to contain small information snippets in the same manner as
     Twitter does."""
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         null=True,
-        related_name="publisher2", # Attempting to solve error "news.News.user: (fields.E304) Reverse accessor for 'News.user' clashes with reverse accessor for 'Research.user' HINT: Add or change a related_name argument to the definition for 'News.user' or 'Research.user'."
+        related_name="publisher3", # Attempting to solve error "news.News.user: (fields.E304) Reverse accessor for 'News.user' clashes with reverse accessor for 'Research.user' HINT: Add or change a related_name argument to the definition for 'News.user' or 'Research.user'."
         on_delete=models.SET_NULL,
         # related_name="research", # Attempting to solve error "news.News.user: (fields.E304) Reverse accessor for 'News.user' clashes with reverse accessor for 'Research.user' HINT: Add or change a related_name argument to the definition for 'News.user' or 'Research.user'."
     )
@@ -33,10 +33,10 @@ class Research(models.Model):
     content = models.TextField(max_length=1000, default='')
     liked = models.ManyToManyField(
         # settings.AUTH_USER_MODEL, blank=True, related_name="liked_news"
-        settings.AUTH_USER_MODEL, blank=True, related_name="liked_research"
+        settings.AUTH_USER_MODEL, blank=True, related_name="liked_internship"
     )
     attended = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, blank=True, related_name="attended_research"
+        settings.AUTH_USER_MODEL, blank=True, related_name="attended_internship"
     )
     reply = models.BooleanField(verbose_name=_("Is a reply?"), default=False)
     meta_url = models.CharField(max_length=2048, null=True)
@@ -48,8 +48,8 @@ class Research(models.Model):
     class Meta:
         # verbose_name = _("News")
         # verbose_name_plural = _("News")
-        verbose_name = _("Research")
-        verbose_name_plural = _("Research")
+        verbose_name = _("Internship")
+        verbose_name_plural = _("Internship")
         ordering = ("-timestamp",)
 
     def __str__(self):
@@ -71,14 +71,14 @@ class Research(models.Model):
             payload = {
                 "type": "receive",
                 # "key": "additional_news",
-                "key": "additional_research",
+                "key": "additional_internship",
                 "actor_name": self.user.username,
             }
             async_to_sync(channel_layer.group_send)("notifications", payload)
 
     def get_absolute_url(self):
         # return reverse("news:detail", kwargs={"uuid_id": self.uuid})
-        return reverse("research:detail", kwargs={"uuid_id": self.uuid})
+        return reverse("internship:detail", kwargs={"uuid_id": self.uuid})
 
     def switch_like(self, user):
         if user in self.liked.all():
@@ -92,7 +92,7 @@ class Research(models.Model):
                 Notification.LIKED,
                 action_object=self,
                 id_value=str(self.uuid_id),
-                key="social_update_research",
+                key="social_update_internship",
             )
 
     def switch_attend(self, user):
@@ -107,7 +107,7 @@ class Research(models.Model):
                 Notification.ATTENDED,
                 action_object=self,
                 id_value=str(self.uuid_id),
-                key="social_update_research",
+                key="social_update_internship",
             )
 
     def get_parent(self):
@@ -130,7 +130,7 @@ class Research(models.Model):
         # reply_news = News.objects.create(
         #     user=user, content=text, reply=True, parent=parent
         # )
-        reply_research = Research.objects.create(
+        reply_internship = Internship.objects.create(
             user=user, content=text, reply=True, parent=parent
         )
         notification_handler(
@@ -138,9 +138,9 @@ class Research(models.Model):
             parent.user,
             Notification.REPLY,
             # action_object=reply_news,
-            action_object=reply_research,
+            action_object=reply_internship,
             id_value=str(parent.uuid_id),
-            key="social_update_research",
+            key="social_update_internship",
         )
 
     def get_thread(self):

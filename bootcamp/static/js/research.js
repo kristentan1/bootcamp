@@ -127,6 +127,36 @@ $(function () {
     return false;
   });
 
+  $("ul.stream").on("click", ".attended", function () {
+    // Ajax call on action on attended button.
+    var li = $(this).closest("li");
+    var research = $(li).attr("research-id");
+    payload = {
+      'research': research,
+      
+    }
+    $.ajax({
+      url: '/research/attended/',
+      data: payload,
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        $(".attended .attended-count", li).text(data.attendeds);
+        if ($(".attended .check", li).hasClass("fa fa-check-square")) {
+          $(".attended  .check", li).removeClass("fa fa-check-square");
+          $(".attended  .check", li).addClass("fa fa-check-square-o");
+        } else {
+          $(".attended  .check", li).removeClass("fa fa-check-square-o");
+          $(".attended  .check", li).addClass("fa fa-check-square");
+        }
+      },
+      error: function(data){
+        alert('error');
+      }
+    });
+    return false;
+  });
+
   $("ul.stream").on("click", ".comment", function () {
     // Ajax call to request a given Research object detail and thread, and to
     // show it in a modal.
