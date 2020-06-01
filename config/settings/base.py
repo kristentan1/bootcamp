@@ -91,7 +91,8 @@ LOCAL_APPS = [
     "bootcamp.search.apps.SearchConfig",
     # Trying to add research
     "bootcamp.research.apps.ResearchConfig",
-    "bootcamp.internship.apps.InternshipConfig"
+    "bootcamp.internship.apps.InternshipConfig",
+    "bootcamp.community.apps.CommunityConfig"
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

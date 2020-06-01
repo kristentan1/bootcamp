@@ -1,0 +1,40 @@
+<!-- Changed news to community -->
+
+{% load i18n %}
+
+<div class="modal fade" id="communityFormModal" tabindex="-1" role="dialog" aria-labelledby="communityFormModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{% trans "Share something new!" %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="postCommunityForm" role="form" method="post" action="#" onsubmit="return false">
+          {% csrf_token %}
+          <div class="form-group">
+            <p>Opportunity Title</p>
+            <textarea id="communityInput" name="post" rows="1" class="form-control" maxlength="100"></textarea>
+            <!-- <span id="communityCounter" class="pull-right"></span> -->
+
+            <p>Opportunity Description</p>
+            <textarea id="communityInputDescription" name="post" rows="7" class="form-control" maxlength="1000"></textarea>
+            <!-- <span id="communityCounter" class="pull-right"></span> -->
+
+            <p>Opportunity Link</p>
+            <textarea id="communityInputLink" name="post" rows="1" class="form-control" maxlength="100"></textarea>
+            <!-- <span id="communityCounter" class="pull-right"></span> -->
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="postCommunity" class="btn btn-primary">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i> {% trans 'Post' %}
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+      </div>
+    </div>
+  </div>
+</div>

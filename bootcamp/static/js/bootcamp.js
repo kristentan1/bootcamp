@@ -90,6 +90,24 @@ $(function () {
         });
     };
 
+    function update_social_activity_community (id_value) {
+        let newsToUpdate = $("[community-id=" + id_value + "]");
+        payload = {
+            'id_value': id_value,
+        };
+        $.ajax({
+            url: '/community/update-interactions/',
+            data: payload,
+            type: 'POST',
+            cache: false,
+            success: function (data) {
+                $(".like-count", newsToUpdate).text(data.likes);
+                $(".attended-count", newsToUpdate).text(data.attendeds);
+                $(".comment-count", newsToUpdate).text(data.comments);
+            },
+        });
+    };
+
     checkNotifications();
 
     $('#notifications').popover({
@@ -176,6 +194,16 @@ $(function () {
                 }
                 console.log("Past the if statement");
                 break;
+            
+            case "social_update_community":
+                //$("#notifications").addClass("btn-danger");
+                console.log("actor_name" + event.actor_name + "currentUser" + currentUser);
+                if (event.actor_name !== currentUser){
+                    console.log("In the if statement");
+                    update_social_activity_community(event.id_value);
+                }
+                console.log("Past the if statement");
+                break;
 
             case "additional_news":
                 if (event.actor_name !== currentUser) {
@@ -190,6 +218,12 @@ $(function () {
                 break;
             
             case "additional_internship":
+                if (event.actor_name !== currentUser) {
+                    $(".stream-update").show();
+                }
+                break;
+            
+            case "additional_community":
                 if (event.actor_name !== currentUser) {
                     $(".stream-update").show();
                 }

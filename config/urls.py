@@ -35,6 +35,7 @@ urlpatterns = [
     url(r"^search/", include("bootcamp.search.urls", namespace="search")),
     url(r"^research/", include("bootcamp.research.urls", namespace="research")),
     url(r"^internship/", include("bootcamp.internship.urls", namespace="internship")),
+    url(r"^community/", include("bootcamp.community.urls", namespace="community")),
     # ABOVE LINE: ATTEMPTING TO ADD A NEW ROUTE FOR A NEW FEED
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

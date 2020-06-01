@@ -1,0 +1,20 @@
+<!-- Changed news to community -->
+
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete community" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Delete a Post from the community Feed" %}</h1>
+
+<p>{% trans 'Are you sure you want to continue? If you do this you will delete this community' %}</p>
+
+<form method="post" action="{% url 'community:delete_community' community.pk %}">
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">{% trans 'Delete' %}</button>
+</form>
+
+
+{% endblock %}
