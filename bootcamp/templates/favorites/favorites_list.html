@@ -16,7 +16,7 @@
           <h1>{% trans 'Favorites Feed' %}</h1>
           
         </div>
-        <div class="col-md-9">
+        <div class="col-md-6">
           <div>
             <h3>{% trans 'Liked Posts' %}</h3>
           </div>
@@ -33,6 +33,8 @@
                 {% include 'research/research_single.html' with research=favorites %}
               {% endfor %}
             </ul>
+          </div>
+          <div class="infinite-container">
             <ul class="stream" id="liked_internship">
               <span>Liked Internships</span>
               {% for favorites in internship %}
