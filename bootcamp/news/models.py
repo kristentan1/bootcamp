@@ -1,4 +1,5 @@
 import uuid
+import re
 
 from django.conf import settings
 from django.db import models
@@ -79,14 +80,20 @@ class News(models.Model):
 
         else:
             self.liked.add(user)
+            print(type(self.content))
+            print(re.search('<h5>(.*)</h5>',self.content))
             notification_handler(
                 user,
                 self.user,
                 Notification.LIKED,
                 action_object=self,
+                # action_object=(re.search('<h5>(.*)</h5>',self.content)).group(1),
                 id_value=str(self.uuid_id),
                 key="social_update",
             )
+            # print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+            # print(action_object)
+            # print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
 
     def switch_attend(self, user):
         if user in self.attended.all():

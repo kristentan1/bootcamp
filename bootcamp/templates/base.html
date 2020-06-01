@@ -27,7 +27,7 @@
       <div class="m-b-1">
         {% if request.user.is_authenticated %}
           <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
-            <div class="container">
+            <div class="container-fluid">
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -48,11 +48,8 @@
                   <li class="nav-item"><a class="nav-link" href="{% url 'research:list' %}">{% trans 'Research Feed' %} </a></li>
                   <li class="nav-item"><a class="nav-link" href="{% url 'internship:list' %}">{% trans 'Internship Feed' %} </a></li>
                   <li class="nav-item"><a class="nav-link" href="{% url 'community:list' %}">{% trans 'Community' %} </a></li>
-                  <!-- <li class="nav-item"><a class="nav-link" href="{% url 'articles:list' %}">Blog</a></li> -->
-                  <!-- <li class="nav-item"><a class="nav-link" href="{% url 'qa:index_noans' %}">{% trans 'Q&A' %}</a></li> -->
-                  <!-- <li class="nav-item"><a class="nav-link" href="{% url 'messager:messages_list' %}">{% trans 'Inbox' %}</a></li> -->
-                  <li class="nav-item"><a class="nav-link" href="{% url 'users:list' %}">{% trans 'Contacts' %}</a></li>
                   <li class="nav-item"><a class="nav-link" href="{% url 'favorites:list' %}">{% trans 'Favorites' %}</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'users:list' %}">{% trans 'Contacts' %}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   {% if not hide_search %}

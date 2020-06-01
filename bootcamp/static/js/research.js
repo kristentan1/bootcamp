@@ -93,6 +93,7 @@ $(function () {
         $("#researchThreadModal").modal("hide");
       },
       error: function (data) {
+        console.log('HELP');
         alert(data.responseText);
       },
     });

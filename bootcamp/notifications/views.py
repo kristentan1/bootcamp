@@ -24,7 +24,7 @@ class NotificationUnreadListView(LoginRequiredMixin, ListView):
 def mark_all_as_read(request):
     """View to call the model method which marks as read all the notifications
     directed to the actual user."""
-    request.user.notifications.mark_all_as_read()
+    request.user.notifications.mark_all_as_read() #Calling mark_all_as_read() defined in notifications/models.py
     _next = request.GET.get("next")
     messages.add_message(
         request,
@@ -35,7 +35,8 @@ def mark_all_as_read(request):
     if _next:
         return redirect(_next)
 
-    return redirect("notifications:unread")
+    return redirect("/news")
+    # return redirect("notifications:unread")
 
 
 @login_required
