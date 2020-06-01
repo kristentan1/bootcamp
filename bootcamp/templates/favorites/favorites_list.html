@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static i18n humanize %}
+{% load thumbnail %}
+
+
+{% block head %}
+  <link href="{% static 'css/favorites.css' %}?v=1" rel="stylesheet">
+{% endblock head %}
+
+
+{% block content %}
+    <!-- Container -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h1>{% trans 'Favorites Feed' %}</h1>
+          
+        </div>
+        <div class="col-md-9">
+          <div>
+            <h3>{% trans 'Liked Posts' %}</h3>
+          </div>
+
+
+          <!-- News List -->
+          <div class="stream-update">
+            <a href="{% url 'favorites:list' %}"><span class="new-posts"></span> {% trans 'There are new posts' %}</a>
+          </div>
+          <div class="infinite-container">
+            <ul class="stream" id="liked_research">
+              <span>Liked Research</span>
+              {% for favorites in research %}
+                {% include 'research/research_single.html' with research=favorites %}
+              {% endfor %}
+            </ul>
+            <ul class="stream" id="liked_internship">
+              <span>Liked Internships</span>
+              {% for favorites in internship %}
+                {% include 'internship/internship_single.html' with internship=favorites %}
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="load">
+            {% if page_obj.has_next %}
+              <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"><img src="{% static 'img/loading.gif' %}"></a>
+            {% endif %}
+          </div>
+          <!-- End News List -->
+        </div>
+      </div>
+    </div>
+    <!-- End container -->
+
+{% endblock content %}
+
+{% block modal %}
+  <script src="{% static 'js/jquery.waypoints.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/infinite.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/favorites.js' %}" type="text/javascript"></script>
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.load').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.load').hide();
+      }
+    });
+  </script>
+{% endblock modal %}

@@ -84,6 +84,7 @@ LOCAL_APPS = [
     "bootcamp.users.apps.UsersConfig",
     # Your stuff: custom apps go here
     "bootcamp.articles.apps.ArticlesConfig",
+    "bootcamp.favorites.apps.FavoritesConfig",
     "bootcamp.messager.apps.MessagerConfig",
     "bootcamp.news.apps.NewsConfig",
     "bootcamp.notifications.apps.NotificationsConfig",
