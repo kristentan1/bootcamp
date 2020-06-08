@@ -86,3 +86,20 @@ header .navbar-brand {
   margin-left: 45px;
   margin-bottom: 0;
 }
+
+.btn-primary {
+  background-color: #CC185A;
+  border-color: #CC185A;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #CC185A;
+}
+
+.navbar-nav>li{
+  border-right: 1px solid #CC185A;
+}
+
+.navbar-nav>li:last-child{
+  border: none;
+}

@@ -318,9 +318,14 @@ header.masthead p {
   padding: 1rem 2rem;
 }
 
+.btn-click{
+  background-color: #CC185A;
+  border-color: #CC185A;
+}
+
 .btn-primary {
-  background-color: #F05F40;
-  border-color: #F05F40;
+  background-color: #CC185A;
+  border-color: #CC185A;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {

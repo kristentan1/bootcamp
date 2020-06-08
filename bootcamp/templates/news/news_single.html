@@ -20,7 +20,7 @@
       {% endif %}
       <p>
         <strong>
-          <a href="{% url 'users:detail' news.user.username  %}">{{ news.user.get_profile_name|title }}</a>
+          <a class="link" href="{% url 'users:detail' news.user.username  %}">{{ news.user.get_profile_name|title }}</a>
         </strong>
       </p>
       <p>{{ news|safe }}</p>

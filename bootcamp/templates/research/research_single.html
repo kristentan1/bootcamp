@@ -22,7 +22,7 @@
       {% endif %}
       <p>
         <strong>
-          <a href="{% url 'users:detail' research.user.username  %}">{{ research.user.get_profile_name|title }}</a>
+          <a class ="link" href="{% url 'users:detail' research.user.username  %}">{{ research.user.get_profile_name|title }}</a>
         </strong>
       </p>
       {{ research|safe }}

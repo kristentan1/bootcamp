@@ -189,3 +189,28 @@
   background-color: #888;
   color: #FFF;
 }
+
+.btn-primary {
+  background-color: #CC185A;
+  border-color: #CC185A;
+}
+
+.link{
+  color: #CC185A;
+}
+
+.like{
+  color: #CC185A;
+}
+
+.comment{
+  color: #CC185A;
+}
+
+.attended{
+  color: #CC185A;
+}
+
+.fa-times{
+  color: #CC185A;
+}
