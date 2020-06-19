@@ -17,9 +17,9 @@
           
         </div>
         <div class="col-md-6">
-          <div>
+          <!-- <div>
             <h3>{% trans 'Favorited Posts' %}</h3>
-          </div>
+          </div> -->
 
 
           <!-- News List -->
@@ -28,7 +28,7 @@
           </div>
           <div class="infinite-container">
             <ul class="stream" id="liked_research">
-              <span>Favorited Research</span>
+              <h4>Favorited Research</h4>
               {% for favorites in research %}
                 {% include 'research/research_single.html' with research=favorites %}
               {% endfor %}
@@ -36,9 +36,18 @@
           </div>
           <div class="infinite-container">
             <ul class="stream" id="liked_internship">
-              <span>Favorited Internships</span>
+              <h4>Favorited Internships</h4>
               {% for favorites in internship %}
                 {% include 'internship/internship_single.html' with internship=favorites %}
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="infinite-container">
+            <ul class="stream" id="liked_community">
+              <!-- <span>Favorited Community</span> -->
+              <h4>Favorited Community</h4>
+              {% for favorites in community %}
+                {% include 'community/community_single.html' with community=favorites %}
               {% endfor %}
             </ul>
           </div>
