@@ -9,6 +9,8 @@ from taggit.models import Tag
 
 from bootcamp.articles.models import Article
 from bootcamp.research.models import Research # Will this wrok?
+from bootcamp.community.models import Community
+from bootcamp.internship.models import Internship
 from bootcamp.news.models import News
 from bootcamp.helpers import ajax_required
 from bootcamp.qa.models import Question
