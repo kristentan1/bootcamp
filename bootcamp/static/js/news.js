@@ -102,14 +102,12 @@ $(function () {
     var news = $(li).attr("news-id");
     payload = {
       'news': news,
-      'csrf_token': csrftoken
+      //'csrf_token': csrftoken
     }
     $.ajax({
       url: '/news/like/',
       data: payload,
       type: 'POST',
-      dataType: 'json',
-      contentType:'json',
       cache: false,
       success: function (data) {
         console.log("I DID IT");
@@ -130,6 +128,8 @@ $(function () {
             msg = 'Requested page not found. [404]';
         } else if (jqXHR.status == 500) {
             msg = 'Internal Server Error [500].';
+        } else if (jqXHR.status == 403) {
+            msg = 'Forbidden [403]';
         } else if (exception === 'parsererror') {
             msg = 'Requested JSON parse failed.';
         } else if (exception === 'timeout') {
