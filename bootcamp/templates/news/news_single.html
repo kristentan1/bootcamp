@@ -44,7 +44,6 @@
         </a>
       {% endif %}
       <div class="interaction" id="interaction">
-        {% csrf_token %}
         <a href="#" class="like" title="{% for i in news.get_likers %}{{ i }}&#10;{% endfor %}">
           {% if request.user in news.get_likers %}
             <i class="heart fa fa-heart" aria-hidden="true"></i>
