@@ -108,6 +108,8 @@ $(function () {
       url: '/news/like/',
       data: payload,
       type: 'POST',
+      dataType: 'json',
+      contentType:'json',
       cache: false,
       success: function (data) {
         console.log("I DID IT");
