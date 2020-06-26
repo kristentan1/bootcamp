@@ -22,7 +22,7 @@ $(function () {
 
   function csrfSafeMethod(method) {
     // These HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE|POST)$/.test(method));
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
   }
 
   var csrftoken = getCookie('csrftoken');
@@ -102,7 +102,7 @@ $(function () {
     var news = $(li).attr("news-id");
     payload = {
       'news': news,
-      //'csrf_token': csrftoken
+      'csrf_token': csrftoken
     }
     $.ajax({
       url: '/news/like/',
