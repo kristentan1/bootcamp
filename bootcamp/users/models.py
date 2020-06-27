@@ -34,7 +34,10 @@ class User(AbstractUser):
         _("Describe yourself"), max_length=60, blank=True, null=True
     )
     bio = models.CharField(_("Short bio"), max_length=280, blank=True, null=True)
-
+    resume = models.FileField(
+        _("Resume"), upload_to="resumes/", null=True, blank=True
+    )
+    
     def __str__(self):
         return self.username
 

@@ -33,6 +33,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         "linkedin_account",
         "short_bio",
         "bio",
+        "resume"
     ]
     model = User
 
