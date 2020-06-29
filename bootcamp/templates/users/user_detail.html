@@ -58,6 +58,7 @@
       <a href="{{ object.resume.url }}" style="font-size: 2em" title="{% trans 'Resume' %}"><i class="fa fa-print"></i>  </a>
     {% endif %}
     <!-- Adding a comment as a test -->
+    <!-- Adding another comment -->
     {% if request.user.username == object.username %}
     <a class="btn btn-dark pull-right" href="{% url 'users:update' %}">{% trans 'Update Profile' %}</a>
     {% endif %}
