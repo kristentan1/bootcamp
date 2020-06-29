@@ -88,7 +88,8 @@ $(function () {
       cache: false,
       success: function (data) {
         //$(".comment .comment-count", li).text(data.comments);
-        //$(".comment .comment-count").text(data.comments);
+        $(".comment .comment-count").text(data.comments);
+        console.log(comment);
         $("#replyInput").val("");
         $("#newsThreadModal").modal("hide");
       },
