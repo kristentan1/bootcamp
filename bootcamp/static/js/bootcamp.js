@@ -173,6 +173,7 @@ $(function () {
                 if (event.actor_name !== currentUser){
                     update_social_activity(event.id_value);
                 }
+                console.log("Skipped the if statement");
                 break;
             
             case "social_update_research":
