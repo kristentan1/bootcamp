@@ -89,7 +89,7 @@ $(function () {
       success: function (data) {
         //$(".comment .comment-count", li).text(data.comments);
         $(".comment .comment-count").text(data.comments);
-        console.log(comment);
+        console.log(data.comments);
         $("#replyInput").val("");
         $("#newsThreadModal").modal("hide");
       },
