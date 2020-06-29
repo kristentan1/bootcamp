@@ -79,7 +79,7 @@ $(function () {
   });
 
   $("#replyNews").click(function () {
-    // var li = $(this).closest("li");
+    var li = $(this).closest("div");
     // Ajax call to register a reply to any given News object.
     $.ajax({
       url: '/news/post-comment/',
@@ -87,8 +87,8 @@ $(function () {
       type: 'POST',
       cache: false,
       success: function (data) {
-        //$(".comment .comment-count", li).text(data.comments);
-        $(".comment .comment-count").text(data.comments);
+        $(".comment .comment-count", li).text(data.comments);
+        //$(".comment .comment-count").text(data.comments);
         console.log(data.comments);
         $("#replyInput").val("");
         $("#newsThreadModal").modal("hide");
