@@ -99,17 +99,17 @@ $(function () {
     });
   });*/
 
-  $("ul.stream").on("click", ".comment", function () {
+  $("ul.stream").on("click", ".replyNews", function () {
     // Ajax call on action on like button.
     var li = $(this).closest("li");
-    var news = $(li).attr("news-id");
+    /*var news = $(li).attr("news-id");
     payload = {
       'news': news,
       'csrf_token': csrftoken
-    }
+    }*/
     $.ajax({
       url: '/news/post-comment/',
-      data: payload,
+      data: $("#replyNewsForm").serialize(),
       type: 'POST',
       cache: false,
       success: function (data) {
@@ -124,7 +124,7 @@ $(function () {
           $(".like .heart", li).removeClass("fa fa-heart-o");
           $(".like .heart", li).addClass("fa fa-heart");
         }*/
-      },
+      }
     });
     return false;
   });
