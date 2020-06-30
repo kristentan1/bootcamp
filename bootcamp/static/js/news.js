@@ -78,7 +78,7 @@ $(function () {
     });
   });
 
-  $("#replyNews").click(function () {
+  /*$("#replyNews").click(function () {
     var li = $(this).closest("li");
     // Ajax call to register a reply to any given News object.
     $.ajax({
@@ -91,12 +91,42 @@ $(function () {
         //$(".comment .comment-count").text(data.comments);
         console.log(data.comments);
         $("#replyInput").val("");
-        //$("#newsThreadModal").modal("hide");
+        $("#newsThreadModal").modal("hide");
       },
       error: function (data) {
         alert(data.responseText);
       },
     });
+  });*/
+
+  $("ul.stream").on("click", ".comment", function () {
+    // Ajax call on action on like button.
+    var li = $(this).closest("li");
+    var news = $(li).attr("news-id");
+    payload = {
+      'news': news,
+      'csrf_token': csrftoken
+    }
+    $.ajax({
+      url: '/news/post-comment/',
+      data: payload,
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        console.log("I DID IT");
+        $(".comment .comment-count", li).text(data.comments);
+        $("#replyInput").val("");
+        $("#newsThreadModal").modal("hide");
+        /*if ($(".like .heart", li).hasClass("fa fa-heart")) {
+          $(".like .heart", li).removeClass("fa fa-heart");
+          $(".like .heart", li).addClass("fa fa-heart-o");
+        } else {
+          $(".like .heart", li).removeClass("fa fa-heart-o");
+          $(".like .heart", li).addClass("fa fa-heart");
+        }*/
+      },
+    });
+    return false;
   });
 
   $("ul.stream").on("click", ".like", function () {
