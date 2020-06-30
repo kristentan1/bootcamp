@@ -8,7 +8,8 @@
 {% endblock head %}
 
 {% block content %}
-
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
   <!-- Page Content -->
   <div class="container">
     <nav aria-label="breadcrumb">
@@ -22,12 +23,12 @@
       <div class="col-md-3">
         <div class="list-group" id="list-tab" role="tablist">
           <!-- <a class="list-group-item list-group-item-action active" id="list-articles-list" data-toggle="list" href="#list-articles" role="tab" aria-controls="articles">{% trans 'Articles' %}<span class="badge badge-primary pull-right">{{ articles_count }}</span></a> -->
-          <a class="list-group-item list-group-item-action" id="list-news-list" data-toggle="list" href="#list-news" role="tab" aria-controls="news" style="background-color: #CC185A;">{% trans 'News' %}<span class="badge badge-primary pull-right">{{ news_count }}</span></a>
-          <a class="list-group-item list-group-item-action" id="list-research-list" data-toggle="list" href="#list-research" role="tab" aria-controls="research" style="background-color: #CC185A;>{% trans 'Research' %}<span class="badge badge-primary pull-right">{{ research_count }}</span></a>
-          <a class="list-group-item list-group-item-action" id="list-internship-list" data-toggle="list" href="#list-internship" role="tab" aria-controls="internship" style="background-color: #CC185A;>{% trans 'Internship' %}<span class="badge badge-primary pull-right">{{ internship_count }}</span></a>
-          <a class="list-group-item list-group-item-action" id="list-community-list" data-toggle="list" href="#list-community" role="tab" aria-controls="community" style="background-color: #CC185A;>{% trans 'Community' %}<span class="badge badge-primary pull-right">{{ community_count }}</span></a>
+          <a class="list-group-item list-group-item-action" id="list-news-list" data-toggle="list" href="#list-news" role="tab" aria-controls="news">{% trans 'News' %}<span class="badge badge-primary pull-right">{{ news_count }}</span></a>
+          <a class="list-group-item list-group-item-action" id="list-research-list" data-toggle="list" href="#list-research" role="tab" aria-controls="research" >{% trans 'Research' %}<span class="badge badge-primary pull-right">{{ research_count }}</span></a>
+          <a class="list-group-item list-group-item-action" id="list-internship-list" data-toggle="list" href="#list-internship" role="tab" aria-controls="internship" >{% trans 'Internship' %}<span class="badge badge-primary pull-right">{{ internship_count }}</span></a>
+          <a class="list-group-item list-group-item-action" id="list-community-list" data-toggle="list" href="#list-community" role="tab" aria-controls="community" >{% trans 'Community' %}<span class="badge badge-primary pull-right">{{ community_count }}</span></a>
           <!-- <a class="list-group-item list-group-item-action" id="list-questions-list" data-toggle="list" href="#list-questions" role="tab" aria-controls="questions">{% trans 'Questions' %}<span class="badge badge-primary pull-right">{{ questions_count }}</span></a> -->
-          <a class="list-group-item list-group-item-action" id="list-users-list" data-toggle="list" href="#list-users" role="tab" aria-controls="users" style="background-color: #CC185A;>{% trans 'Users' %}<span class="badge badge-primary pull-right">{{ users_count }}</span></a>
+          <a class="list-group-item list-group-item-action" id="list-users-list" data-toggle="list" href="#list-users" role="tab" aria-controls="users" >{% trans 'Users' %}<span class="badge badge-primary pull-right">{{ users_count }}</span></a>
           <!-- <a class="list-group-item list-group-item-action" id="list-tags-list" data-toggle="list" href="#list-tags" role="tab" aria-controls="tags">{% trans 'Tags' %}<span class="badge badge-primary pull-right">{{ tags_count }}</span></a> -->
         </div>
       </div>
@@ -140,5 +141,5 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
-
+</head>
 {% endblock content %}
