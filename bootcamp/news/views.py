@@ -37,7 +37,7 @@ def post_news(request):
     to create News instances as parent ones."""
     user = request.user
     # post = request.POST["post"]
-    post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Title\n</h5>' + request.POST.getlist('post')[1] + '<h5>Description\n</h5>' + request.POST.getlist('post')[2] + '\n\n' + '<h5>Link\n</h5>' + request.POST.getlist('post')[3]
+    post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Target Group\n</h5>' + request.POST.getlist('post')[1] + '<h5>Description\n</h5>' + request.POST.getlist('post')[2] + '\n\n' + '<h5>Link\n</h5>' + request.POST.getlist('post')[3]
     post = post.strip()
     if 0 < len(post) <= 1000:
         posted = News.objects.create(user=user, content=post)
