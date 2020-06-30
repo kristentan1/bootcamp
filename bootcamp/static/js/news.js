@@ -101,7 +101,7 @@ $(function () {
 
   $("ul.stream").on("click", ".replyNews", function () {
     // Ajax call on action on like button.
-    var li = $(this).closest("li");
+    //var li = $(this).closest("li");
     /*var news = $(li).attr("news-id");
     payload = {
       'news': news,
@@ -114,7 +114,7 @@ $(function () {
       cache: false,
       success: function (data) {
         console.log("I DID IT");
-        $(".comment .comment-count", li).text(data.comments);
+        $(".comment .comment-count").text(data.comments);
         $("#replyInput").val("");
         $("#newsThreadModal").modal("hide");
         /*if ($(".like .heart", li).hasClass("fa fa-heart")) {
