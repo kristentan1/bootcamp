@@ -3,6 +3,7 @@ from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from bootcamp.storagemanager import GoogleCloudStorage
 
 from bootcamp.notifications.models import Notification, notification_handler
 
@@ -11,7 +12,7 @@ class User(AbstractUser):
     # First Name and Last Name do not cover name patterns around the globe.
     name = models.CharField(_("User's name"), blank=True, max_length=255)
     picture = models.ImageField(
-        _("Profile picture"), upload_to="profile_pics/", null=True, blank=True
+        _("Profile picture"), upload_to="profile_pics", null=True, blank=True
     )
     location = models.CharField(_("Location"), max_length=50, null=True, blank=True)
     job_title = models.CharField(_("Job title"), max_length=50, null=True, blank=True)
@@ -35,7 +36,7 @@ class User(AbstractUser):
     )
     bio = models.CharField(_("Short bio"), max_length=280, blank=True, null=True)
     resume = models.FileField(
-        _("Resume"), upload_to="resumes/", null=True, blank=True
+        _("Resume"), upload_to="resumes", null=True, blank=True, storage=GoogleCloudStorage()
     )
     
     def __str__(self):
@@ -49,6 +50,17 @@ class User(AbstractUser):
             return self.name
 
         return self.username
+
+    def save(self, *args, **kwargs):
+        if self.resume:
+            try:
+                this = User.objects.get(id=self.id)
+                if this.resume.name != self.resume.name:
+                    this.resume.delete()
+            except:
+                pass
+        super().save(*args, **kwargs)
+
 
 
 def broadcast_login(sender, user, request, **kwargs):
