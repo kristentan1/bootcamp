@@ -53,7 +53,7 @@ $(function () {
 
   $("#replyInput").keyup(function () {
     var charCount = $(this).val().length;
-    $("#replyCounter").text(1000 - charCount);
+    $("#replyCounter").text(280 - charCount);
   });
 
   $("input, textarea").attr("autocomplete", "off");
