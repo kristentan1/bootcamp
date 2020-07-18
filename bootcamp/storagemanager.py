@@ -9,7 +9,7 @@ class GoogleCloudStorage(Storage):
 
     def __init__(self):
         self.storage_client = storage.Client()
-        self.bucket_name = "inthernet-bucket"
+        self.bucket_name = "inthernet-bucket1"
         self.bucket = self.storage_client.get_bucket(self.bucket_name)
 
     def _save(self, name, content: File):
