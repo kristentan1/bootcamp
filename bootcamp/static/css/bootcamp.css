@@ -94,6 +94,7 @@ header .navbar-brand {
 
 .navbar-dark .navbar-nav .nav-link {
   color: #CC185A;
+  text-align: center;
 }
 
 .navbar-nav>li{

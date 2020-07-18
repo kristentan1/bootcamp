@@ -1,0 +1,12 @@
+.list-group-item.active{
+    background-color: #CC185A;
+    border-color: #CC185A ;
+}
+
+.badge-primary{
+    background-color: #CC185A;
+}
+
+a{
+    color: #CC185A;
+}

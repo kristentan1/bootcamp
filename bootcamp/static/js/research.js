@@ -88,7 +88,7 @@ $(function () {
       type: 'POST',
       cache: false,
       success: function (data) {
-        $(".comment .comment-count").text(data.comments)
+        // $(".comment .comment-count").text(data.comments)
         $("#replyInput").val("");
         $("#researchThreadModal").modal("hide");
       },

@@ -53,7 +53,7 @@ $(function () {
 
   $("#replyInput").keyup(function () {
     var charCount = $(this).val().length;
-    $("#replyCounter").text(1000 - charCount);
+    $("#replyCounter").text(280 - charCount);
   });
 
   $("input, textarea").attr("autocomplete", "off");
@@ -79,6 +79,7 @@ $(function () {
   });
 
   $("#replyNews").click(function () {
+    //var li = $(this).closest("li");
     // Ajax call to register a reply to any given News object.
     $.ajax({
       url: '/news/post-comment/',
@@ -86,7 +87,9 @@ $(function () {
       type: 'POST',
       cache: false,
       success: function (data) {
-        $(".comment .comment-count").text(data.comments)
+        //$(".comment .comment-count", li).text(data.comments);
+        // $(".comment .comment-count").text(data.comments);
+        console.log(data.comments);
         $("#replyInput").val("");
         $("#newsThreadModal").modal("hide");
       },

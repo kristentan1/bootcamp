@@ -45,7 +45,7 @@ def post_community(request): # Changed news to community
     # print(request)
     # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     user = request.user
-    post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Title\n</h5>' + request.POST.getlist('post')[1] + '<h5>Description\n</h5>' + request.POST.getlist('post')[2] + '\n\n' + '<h5>Link\n</h5>' + request.POST.getlist('post')[3]
+    post = '<h5>Title\n</h5>' + request.POST.getlist('post')[0] + '\n\n\n\n' + '<h5>Target Group\n</h5>' + request.POST.getlist('post')[1] + '<h5>Description\n</h5>' + request.POST.getlist('post')[2] + '\n\n' + '<h5>Duration\n</h5>' + request.POST.getlist('post')[3] + '<h5>Link\n</h5>' + request.POST.getlist('post')[4]
     print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     print(str(request.POST.getlist('post')))
     print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
