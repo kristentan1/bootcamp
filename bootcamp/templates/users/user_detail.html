@@ -11,7 +11,7 @@
 {% block content %}
   <div class="container">
 
-    {% thumbnail object.picture "x250" as im %}
+    {% thumbnail object.picture.url "x250" as im %}
       <img src="{{ im.url }}" alt="Picture Profile" id="pic">
     {% empty %}
       <img class="pull-right" src="{% static 'img/user.png' %}" height="250px" alt="No Profile Picture" />
