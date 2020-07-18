@@ -8,9 +8,12 @@ import os
 class GoogleCloudStorage(Storage):
 
     def __init__(self):
-        self.storage_client = storage.Client()
-        self.bucket_name = "inthernet-bucket1"
-        self.bucket = self.storage_client.get_bucket(self.bucket_name)
+        try:
+            self.storage_client = storage.Client()
+            self.bucket_name = "inthernet-bucket1"
+            self.bucket = self.storage_client.get_bucket(self.bucket_name)
+        except:
+            pass
 
     def _save(self, name, content: File):
         blob = self.bucket.blob(name)
