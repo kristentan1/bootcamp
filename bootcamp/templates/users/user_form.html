@@ -15,8 +15,8 @@
     <div class="col-md-4 user-profile">
       <h1>{{ user.username|title }}</h1>
       {% if user.name %}<p class="lead">{{ user.name }}</p>{% endif %}
-      {% if user.picture %}
-        {% thumbnail user.picture "x250" as im %}
+      {% if user.picture.url %}
+        {% thumbnail user.picture.url "x250" as im %}
           <img src="{{ im.url }}" alt="Picture Profile" id="pic">
         {% endthumbnail %}
       {% else %}

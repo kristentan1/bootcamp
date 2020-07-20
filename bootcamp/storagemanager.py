@@ -2,8 +2,6 @@ from django.core.files.storage import Storage
 from django.core.files.base import File
 from django.utils.deconstruct import deconstructible
 from google.cloud import storage
-import os
-
 @deconstructible
 class GoogleCloudStorage(Storage):
 

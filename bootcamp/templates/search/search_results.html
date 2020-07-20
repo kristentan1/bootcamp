@@ -93,7 +93,7 @@
             {% for user in users_list %}
               <div class="pull-left">
                 <a href="{% url 'users:detail' user.username  %}">
-                  {% thumbnail user.picture "x40" as im %}
+                  {% thumbnail user.picture.url "x40" as im %}
                     <img src="{{ im.url }}" alt="{% trans 'Picture Profile' %}" id="pic">
                   {% empty %}
                     <img src="{% static 'img/user.png' %}" height="40px" alt="{% trans 'No Profile Picture' %}" />

@@ -204,3 +204,5 @@ RAVEN_CONFIG = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+THUMBNAIL_STORAGE = 'bootcamp.storagemanager'

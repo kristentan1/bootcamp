@@ -16,7 +16,7 @@
   </div>
   <div class="col-md-11">
     <div class="answer-user">
-      <a href="#"><img src="{{ answer.user.picture }}" class="user"></a>
+      <a href="#"><img src="{{ answer.user.picture.url }}" class="user"></a>
       <a href="#" class="username">{{ answer.user.username }}</a>
       <small class="answered">{% trans "answered" %} {{ answer.timestamp|naturaltime }}</small>
     </div>

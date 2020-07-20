@@ -18,7 +18,7 @@
       <li>
         <div class="user-avatar">
           <a href="{% url 'users:detail' user.username  %}" class="user-avatar">
-            {% thumbnail user.picture "x80" as im %}
+            {% thumbnail user.picture.url "x80" as im %}
               <img src="{{ im.url }}" alt="{% trans 'Picture Profile' %}" id="pic">
             {% empty %}
               <img src="{% static 'img/user.png' %}" height="80px" alt="{% trans 'No Profile Picture' %}" />

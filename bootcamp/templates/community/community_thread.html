@@ -10,7 +10,7 @@
   <li class="card" community-id="{{ reply.uuid_id }}"> <!-- I feel like changing this ID might break something, like CSS. So am leaving it for now. 5/13/20, 13:09 -->
     <div class="card-body">
       <div class="profile-picture">
-        {% thumbnail reply.user.picture "x60" as im %}
+        {% thumbnail reply.user.picture.url "x60" as im %}
           <img src="{{ im.url }}" class="pull-left" style="border-radius: 50%;" alt="{% trans 'User Image' %}" class="user-image">
         {% empty %}
           <img src="{% static 'img/user.png' %}" class="pull-left" height="60px" alt="{% trans 'No Profile Picture' %}" />

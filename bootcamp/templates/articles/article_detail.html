@@ -65,7 +65,7 @@
         {% get_comment_list for article as comment_list %}
         {% for comment in comment_list %}
           <div class="media mb-4">
-            {% thumbnail comment.user.picture "x50" as im %}
+            {% thumbnail comment.user.picture.url "x50" as im %}
               <img class="d-flex mr-3 rounded-circle" src="{{ im.url }}" alt="{% trans 'Picture Profile' %}" id="pic" />
             {% empty %}
               <img class="d-flex mr-3 rounded-circle" src="{% static 'img/user.png' %}" height="50px" alt="{% trans 'No Profile Picture' %}" />

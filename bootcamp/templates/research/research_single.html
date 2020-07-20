@@ -8,7 +8,7 @@
 <li class="infinite-item card" research-id="{{ research.uuid_id }}"> <!-- Leving this for now bc I think changing the ID might break something. 05/13/20, 13:12 -->
   <div class="card-body">
     <div class="profile-picture">
-      {% thumbnail research.user.picture "x60" as im %} <!-- Something is going to break for sure :) -->
+      {% thumbnail research.user.picture.url "x60" as im %} <!-- Something is going to break for sure :) -->
         <img src="{{ im.url }}" class="pull-left" style="border-radius: 50%;" alt="{% trans 'User Image' %}" class="user-image">
       {% empty %}
         <img src="{% static 'img/user.png' %}" class="pull-left" height="60px" alt="{% trans 'No Profile Picture' %}" />
