@@ -59,6 +59,13 @@ class User(AbstractUser):
                     this.resume.delete()
             except:
                 pass
+        if self.picture:
+            try:
+                this = User.objects.get(picture=self.picture)
+                if this.picture.name != self.picture.name:
+                    this.picture.delete()
+            except:
+                pass
         super().save(*args, **kwargs)
 
 
