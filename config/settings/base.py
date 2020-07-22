@@ -267,4 +267,5 @@ GRAPHENE = {"SCHEMA": "config.schema.schema"}
 
 # Thumbnail timeout increase time
 THUMBNAIL_CACHE_TIMEOUT = 3600 * 24 * 365
-DEBUG=True
+#DEBUG=True
+#THUMBNAIL_DEBUG=True

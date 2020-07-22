@@ -10,10 +10,7 @@
 
 {% block content %}
   <div class="container">
-    <h3>{{ object.picture }}</h3>
-    <h3>{{ object.picture.url }}</h3>
-    <img src="{{ object.picture.url }}" alt="Picture Profile" id="pic">
-    {% thumbnail "https://lh3.googleusercontent.com/G5oF0mhpOcQzFTrU6TDUL0JoAjzRt38weiZKua7L61WVT1z3dPcE9gUu-W2EwtM9cZU" "x250" as im %}
+    {% thumbnail object.picture.url "x250" as im %}
       <img src="{{ im.url }}" alt="Picture Profile" id="pic">
     {% empty %}
       <img class="pull-right" src="{% static 'img/user.png' %}" height="250px" alt="No Profile Picture" />
